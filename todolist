@@ -1,0 +1,62 @@
+class TodoList:
+    def __init__(self):
+        self.tasks=[]
+
+    def add_task(self, task):
+        self.tasks.append(task)
+        print(f"Task '{task}' added successfully.")
+
+    def remove_task(self, task):
+        if task in self.tasks:
+            self.tasks.remove(task)
+            print(f"Task '{task}' removed successfully.")
+        else:
+            print(f"Task '{task}' not found.")
+
+    def view_task(self):
+        if self.tasks:
+            print("Your To-Do List: ")
+            for i, task in enumerate(self.tasks, start=1):
+                print(f"{i}. {task}")
+        else:
+            print("Your To-Do List is Empty...")
+
+    def mark_completed(self,task):
+        if task in self.tasks:
+            print(f"Task '{task}' marked as completed...")
+        else:
+            print(f"Task '{task}' not found in List..")
+def main():
+    todo_list=TodoList()
+    while True:
+        print("\n Choose an Option:")
+        print("1. Add Task")
+        print("2. Remove Task")
+        print("3. View Task")
+        print("4. Mark Task as Completed")
+        print("5. Exit")
+
+        choice=input("Enter ur Choice: ")
+
+        if(choice == '1'):
+            task = input("Enter the task to add: ")
+            todo_list.add_task(task)
+
+        elif(choice == '2'):
+            task = input("Enter the task to remove: ")
+            todo_list.remove_task(task)
+
+        elif(choice == '3'):
+            todo_list.view_task()
+
+        elif(choice == '4'):
+            task = input("Enter the task to mark completed")
+            todo_list.mark_completed(task)
+
+        elif(choice == '5'):
+            print("Thank u for choosing Todo List...")
+            break
+        else:
+            print("Invalid input...Pls Enter a Valid One!")
+if __name__ == "__main__":
+    main()
