@@ -1,0 +1,23 @@
+import requests
+def register_user(name, email, password):
+    url = "https://jsonplaceholder.typicode.com/posts"
+    payload = {
+        "name" : name,
+        "email": email,
+        "password" : password
+    }
+
+    response = requests.post(url,json=payload)
+
+    if response.status_code == 201:
+        print(f"User registered Successfully!")
+        print("Response:",response.json())
+
+    else:
+        print("\nError in Registration.")
+
+name = input("Enter your name: ")
+email = input("Enter your email: ")
+password = input("Enter your password: ")
+
+register_user(name, email, password)
