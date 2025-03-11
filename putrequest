@@ -1,0 +1,19 @@
+import requests
+def update_email(user_id, new_email):
+    url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+    payload = {
+        "email" : new_email
+        }
+    response = requests.put(url, json=payload)
+
+    if response.status_code == 200:
+        print("\nUser email updated successfully!")
+        print("Response: ",response.json())
+
+    else:
+        print("\nError occurs while updating email...")
+
+user_id = input("Enter your user_id\n")
+new_email = input("Enter your email u want to update\n")
+
+update_email(user_id, new_email)
